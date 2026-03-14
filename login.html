@@ -4,20 +4,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LOGISTICA JAHUER</title>
+    <title>Login</title>
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
 
     <link rel="stylesheet" href="CSS/Styles.CSS">
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bitcount+Ink:wght@100..900&display=swap" rel="stylesheet">
 </head>
 
 <body>
 
-
+    <!--Navbar-->
     <nav class="navbar navbar-expand-lg .nav-personalizada">
         <div class="container-fluid">
             <img class="logo_1" src="img/logistica-jahuer.png" alt="Logo">
@@ -40,8 +37,12 @@
                             <strong>Servicios</strong>
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Aseo general en planta</a></li>
-                            <li><a class="dropdown-item" href="#">Cargue y descargue de materia prima</a></li>
+                            <li><a class="dropdown-item" href="#">Action</a></li>
+                            <li><a class="dropdown-item" href="#">Another action</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="#">Something else here</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -52,45 +53,30 @@
             </div>
         </div>
     </nav>
-    <a href="https://wa.me/314894341">
-    <img class="logo_whatsapp" src="img/logo-whatsapp.png" alt="Logo whatsapp">
-    </a>
 
-    <div class="contenedor_body">
+    <form action="">
+        <label for="username">Nombre de usuario:</label>
+        <input type="text" id="username" name="username" required>
 
+        <label for="password">Contraseña:</label>
+        <input type="password" id="password" name="password" required>
 
-        <div class="contenedor_titulo">
-            
-            <h1 class="titulo_1"><strong>LOGÍSTICA JAHUER S.A.S</strong></h1>
-        </div>
-        <h2 class="titulo_2"><em>¿Quiénes somos?</em></h2>
-        <div class="contenedor_mision">
-            <img class="img_trabajadores"  src="img/trabajadores.jpeg" alt="trabajadores">
-            <p class="parrafo_mision">Somos una compañía, que ofrece a las diferentes empresas dedicadas a la producción de materia prima, un
-                servicio de cargue y descargue de esta materia. Adicional a esto, ofrecemos servicios de logística en limpieza de
-                planta y
-                mantenimiento general, brindando un servicio de calidad.</p>
-        </div>
-    <!-- <h2><em>NUESTRO CATALOGO DE SERVICIOS:</em></h2> 
-        <ul>
-            <li>Aseo general en planta</li>
-            <li>Cargue y descargue de materia prima</li>
-            <li>Control de plagas</li>
-            <li>Desinsectación</li>
-        </ul>
-        <img src="img/descargue-de-materia-prima.jpg" alt="Descargando materia prima" width="300">
-            -->
-    </div>
+        <button type="submit">Iniciar sesión</button>
+    </form>
 
     <footer>
         <div class="container_footer">
-            <p><strong>Teléfono:</strong> 123-456-7890 | <strong>Correo electrónico:</strong> info@logisticajahuer.com | <strong>Dirección:</strong> Calle Principal #123, Buga, Colombia</p>
+            <p><strong>Teléfono:</strong> 123-456-7890 | <strong>Correo electrónico:</strong> info@logisticajahuer.com |
+                <strong>Dirección:</strong> Calle Principal #123, Buga, Colombia</p>
             <p>&copy; 2026 LOGÍSTICA JAHUER S.A.S. Todos los derechos reservados.</p>
         </div>
     </footer>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
         crossorigin="anonymous"></script>
+
+
 </body>
 
 </html>
