@@ -32,10 +32,12 @@ body{
     text-align: center;
     font-size: 50px ;
     padding-bottom: 20px;
+    border-top: rgb(255, 111, 0) solid 5px;
+    padding-top: 30px;  
 }
 
 .contenedor_parrafo{
-        display: flexbox; 
+    display: flexbox; 
     justify-content: center;
     align-items: center;
     text-align: center;
