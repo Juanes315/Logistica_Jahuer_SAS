@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LOGISTICA JAHUER</title>
+    <link href="https://cdn.jsdelivr.net" rel="stylesheet">
+    <link rel="stylesheet" href="CSS/Styles_index.CSS">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bitcount+Ink:wght@100..900&display=swap" rel="stylesheet">
+
+    <style>
+        /* Estilos para el minijuego */
+        #game-container {
+            display: none; /* Oculto por defecto */
+            text-align: center;
+            padding: 50px 0;
+            background: #f4f4f4;
+        }
+        canvas {
+            background: #222;
+            border: 4px solid #198754;
+            display: block;
+            margin: 0 auto;
+        }
+        .instrucciones { font-size: 0.9rem; color: #555; margin-top: 10px; } 
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg .nav-personalizada">
+        <div class="container-fluid">
+            <img class="logo_1" src="img/logistica-jahuer.png" alt="Logo">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="index.html"><strong>Inicio</strong></a>
+                    </li>
+                    <!-- BOTÓN PARA IR AL JUEGO -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="#game-container" onclick="mostrarJuego()"><strong>Jugar Mini-Game</strong></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="partials/register.html"><strong>Registro</strong></a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            <strong>Servicios</strong>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="partials/aseo.html">Aseo general en planta</a></li>
+                            <li><a class="dropdown-item" href="partials/cargueydescargue.html">Cargue y descargue de materia prima</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <a href="partials/login.html"><button class="btn btn-outline-success" type="button">Iniciar Sesion</button></a>
+            </div>
+        </div>
+    </nav>
+
+    <a href="https://wa.me/314894341">
+        <img class="logo_whatsapp" src="img/logo-whatsapp.png" alt="Logo whatsapp">
+    </a>
+
+    <div class="contenedor_body">
+        <div class="contenedor_titulo">
+            <h1 class="titulo_1"><strong>LOGÍSTICA JAHUER S.A.S</strong></h1>
+        </div>
+        <h2 class="titulo_2"><em>¿Quiénes somos?</em></h2>
+        <div class="contenedor_img_mision">
+            <!-- Tus imágenes actuales -->
+            <img class="img_trabajadores" src="img/trabajadores.jpeg" alt="trabajadores">
+            <img class="img_trabajadores" src="img/descargue-de-materia-prima.jpg" alt="descargue materia prima">
+        </div>
+        <div class="contenedor_texto_mision">
+            <p class="parrafo_mision">Somos una compañía especializada en soluciones logísticas integrales para la
+                industria de materias primas. Nos enfocamos en optimizar los procesos de cargue y descargue,
+                garantizando agilidad y cuidado en el manejo de materiales. Complementamos nuestra oferta con servicios
+                especializados de limpieza técnica de planta y mantenimiento general, operando bajo los más altos
+                estándares de calidad y seguridad para asegurar la continuidad de su producción.</p>
+        </div>
+
+        <div id="game-container">
+        <h3>Jahuer Adventure (Beta)</h3>
+        <canvas id="gameCanvas" width="600" height="300"></canvas>
+        <p class="instrucciones">Controles: <b>Flechas</b> para moverte (izq - der) | <b>Espacio</b> para saltar (Doble salto permitido)</p>
+        <button class="btn btn-sm btn-danger" onclick="location.reload()">Cerrar Juego</button>
+    </div>
+
+    <footer>
+        <div class="container_footer">
+            <p><strong>Teléfono:</strong> 123-456-7890 | <strong>Dirección:</strong> Calle Principal #123, Buga, Colombia</p>
+            <p>&copy; 2026 LOGÍSTICA JAHUER S.A.S.</p>
+        </div>
+    </footer>
+
+    <script>
+        function mostrarJuego() {
+            document.getElementById('game-container').style.display = 'block';
+            iniciarJuego();
+        }
+
+        function iniciarJuego() {
+            const canvas = document.getElementById('gameCanvas');
+            const ctx = canvas.getContext('2d');
+
+            let player = { x: 50, y: 200, w: 20, h: 20, dy: 0, speed: 4, jumpPower: 7, jumps: 0 };
+            let gravity = 0.4;
+            let keys = {};
+            let platforms = [
+                {x: 0, y: 280, w: 600, h: 20}, // Suelo
+                {x: 150, y: 220, w: 100, h: 10},
+                {x: 300, y: 160, w: 100, h: 10},
+                {x: 450, y: 100, w: 80, h: 10}  // Meta
+            ];
+
+            window.addEventListener('keydown', e => {
+                keys[e.code] = true;
+                if(e.code === 'Space' && player.jumps < 2) {
+                    player.dy = -player.jumpPower;
+                    player.jumps++;
+                }
+            });
+            window.addEventListener('keyup', e => keys[e.code] = false);
+
+            function update() {
+                if (keys['ArrowRight']) player.x += player.speed;
+                if (keys['ArrowLeft']) player.x -= player.speed;
+
+                player.dy += gravity;
+                player.y += player.dy;
+
+                // Colisión con plataformas
+                platforms.forEach(p => {
+                    if (player.x < p.x + p.w && player.x + player.w > p.x &&
+                        player.y < p.y + p.h && player.y + player.h > p.y && player.dy > 0) {
+                        player.y = p.y - player.h;
+                        player.dy = 0;
+                        player.jumps = 0;
+                    }
+                });
+
+                // Dibujar
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                ctx.fillStyle = '#198754'; // Color de la marca
+                platforms.forEach(p => ctx.fillRect(p.x, p.y, p.w, p.h));
+                
+                ctx.fillStyle = 'red'; // Personaje
+                ctx.fillRect(player.x, player.y, player.w, player.h);
+
+                requestAnimationFrame(update);
+            }
+            update();
+        }
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+
+    <script src="https://cdn.jsdelivr.net"></script>
+</body>
+</html>
