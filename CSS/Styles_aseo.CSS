@@ -43,10 +43,13 @@ body{
     margin-left: 200px;
     padding-bottom: 40px;
 }
-.v_limpieza{
+.img_limpieza{
+    display: flex;
 text-align: center;
 align-items: center;
 justify-content: center;
+height: auto;
+
 }
 
 .parrafo{ 
